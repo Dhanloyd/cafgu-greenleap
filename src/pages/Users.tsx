@@ -9,13 +9,8 @@ import { Badge } from '@/components/ui/badge';
 import { Plus, Edit, Trash2, Search, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-// Mock data
-const users = [
-  { id: 1, name: 'Administrator', username: 'admin', role: 'Admin', status: 'Active', lastLogin: '2024-08-15 10:30 AM' },
-  { id: 2, name: 'Maria Santos', username: 'maria.santos', role: 'Manager', status: 'Active', lastLogin: '2024-08-14 03:45 PM' },
-  { id: 3, name: 'Juan Dela Cruz', username: 'juan.cruz', role: 'Staff', status: 'Active', lastLogin: '2024-08-13 09:15 AM' },
-  { id: 4, name: 'Pedro Rodriguez', username: 'pedro.rodriguez', role: 'Staff', status: 'Inactive', lastLogin: '2024-08-10 02:20 PM' },
-];
+// Empty data - ready for database integration  
+const users: any[] = [];
 
 const roleOptions = ['Admin', 'Manager', 'Staff', 'Viewer'];
 

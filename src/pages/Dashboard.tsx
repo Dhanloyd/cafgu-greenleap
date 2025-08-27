@@ -3,59 +3,43 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { TrendingUp, Users, CreditCard, AlertCircle, DollarSign } from 'lucide-react';
 
-// Mock data for charts
-const patrolBaseData = [
-  { name: 'Alpha Base', loans: 45 },
-  { name: 'Bravo Base', loans: 32 },
-  { name: 'Charlie Base', loans: 28 },
-  { name: 'Delta Base', loans: 51 },
-  { name: 'Echo Base', loans: 39 },
-];
-
-const monthlyCollectionData = [
-  { month: 'Jan', amount: 125000 },
-  { month: 'Feb', amount: 132000 },
-  { month: 'Mar', amount: 128000 },
-  { month: 'Apr', amount: 145000 },
-  { month: 'May', amount: 151000 },
-  { month: 'Jun', amount: 148000 },
-  { month: 'Jul', amount: 162000 },
-  { month: 'Aug', amount: 158000 },
-];
+// Empty data - ready for database integration
+const patrolBaseData: any[] = [];
+const monthlyCollectionData: any[] = [];
 
 const kpiData = [
   {
     title: 'Borrowed Amounts',
-    value: '₱2,450,000',
-    change: '+12.5%',
+    value: '₱0.00',
+    change: 'No data',
     icon: DollarSign,
     trend: 'up',
   },
   {
     title: 'Total Members',
-    value: '1,247',
-    change: '+3.2%',
+    value: '0',
+    change: 'No data',
     icon: Users,
     trend: 'up',
   },
   {
     title: 'Members with Loans',
-    value: '342',
-    change: '+8.7%',
+    value: '0',
+    change: 'No data',
     icon: CreditCard,
     trend: 'up',
   },
   {
     title: 'Past Due Loans',
-    value: '23',
-    change: '-15.3%',
+    value: '0',
+    change: 'No data',
     icon: AlertCircle,
     trend: 'down',
   },
   {
     title: 'Collectible this Month',
-    value: '₱185,500',
-    change: '+5.8%',
+    value: '₱0.00',
+    change: 'No data',
     icon: TrendingUp,
     trend: 'up',
   },
@@ -133,6 +117,11 @@ const Dashboard: React.FC = () => {
                 />
               </BarChart>
             </ResponsiveContainer>
+            {patrolBaseData.length === 0 && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <p className="text-muted-foreground">No data available</p>
+              </div>
+            )}
           </CardContent>
         </Card>
 
@@ -176,6 +165,11 @@ const Dashboard: React.FC = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
+            {monthlyCollectionData.length === 0 && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <p className="text-muted-foreground">No data available</p>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
@@ -186,24 +180,9 @@ const Dashboard: React.FC = () => {
           <CardTitle>Recent Activity</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {[
-              { action: 'New loan application', member: 'Juan Dela Cruz', amount: '₱50,000', time: '2 hours ago' },
-              { action: 'Payment received', member: 'Maria Santos', amount: '₱12,500', time: '4 hours ago' },
-              { action: 'Loan approved', member: 'Pedro Rodriguez', amount: '₱35,000', time: '6 hours ago' },
-              { action: 'New member registration', member: 'Ana Garcia', amount: 'N/A', time: '1 day ago' },
-            ].map((activity, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                <div className="space-y-1">
-                  <p className="text-sm font-medium text-foreground">{activity.action}</p>
-                  <p className="text-xs text-muted-foreground">{activity.member}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-sm font-medium text-foreground">{activity.amount}</p>
-                  <p className="text-xs text-muted-foreground">{activity.time}</p>
-                </div>
-              </div>
-            ))}
+          <div className="text-center py-8">
+            <p className="text-muted-foreground">No recent activity</p>
+            <p className="text-sm text-muted-foreground mt-1">Activity will appear here once you start using the system</p>
           </div>
         </CardContent>
       </Card>

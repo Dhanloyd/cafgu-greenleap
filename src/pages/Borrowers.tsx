@@ -9,20 +9,10 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Eye, Plus, Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-// Mock data
-const members = [
-  { id: 1, tin: '123-456-789-000', fullName: 'Juan Dela Cruz', birthdate: '1985-05-15', age: 38, gender: 'Male' },
-  { id: 2, tin: '234-567-890-111', fullName: 'Maria Santos', birthdate: '1990-08-22', age: 33, gender: 'Female' },
-  { id: 3, tin: '345-678-901-222', fullName: 'Pedro Rodriguez', birthdate: '1982-12-10', age: 41, gender: 'Male' },
-];
-
-const loanRecords = [
-  { id: 1, status: 'Pending', borrower: 'Juan Dela Cruz', loanId: 'LOAN-001', amount: '₱50,000' },
-  { id: 2, status: 'Approved', borrower: 'Maria Santos', loanId: 'LOAN-002', amount: '₱35,000' },
-  { id: 3, status: 'Rejected', borrower: 'Pedro Rodriguez', loanId: 'LOAN-003', amount: '₱25,000' },
-];
-
-const patrolBases = ['Alpha Base', 'Bravo Base', 'Charlie Base', 'Delta Base', 'Echo Base'];
+// Empty data - ready for database integration
+const members: any[] = [];
+const loanRecords: any[] = [];
+const patrolBases: string[] = [];
 
 const Borrowers: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState('');
@@ -155,21 +145,30 @@ const Borrowers: React.FC = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredMembers.map((member) => (
-                  <TableRow key={member.id}>
-                    <TableCell className="font-mono">{member.tin}</TableCell>
-                    <TableCell className="font-medium">{member.fullName}</TableCell>
-                    <TableCell>{member.birthdate}</TableCell>
-                    <TableCell>{member.age}</TableCell>
-                    <TableCell>{member.gender}</TableCell>
-                    <TableCell>
-                      <Button variant="outline" size="sm">
-                        <Eye className="h-4 w-4 mr-1" />
-                        View Record
-                      </Button>
+                {filteredMembers.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={6} className="text-center py-8">
+                      <p className="text-muted-foreground">No members found</p>
+                      <p className="text-sm text-muted-foreground mt-1">Add members to start managing borrowers</p>
                     </TableCell>
                   </TableRow>
-                ))}
+                ) : (
+                  filteredMembers.map((member) => (
+                    <TableRow key={member.id}>
+                      <TableCell className="font-mono">{member.tin}</TableCell>
+                      <TableCell className="font-medium">{member.fullName}</TableCell>
+                      <TableCell>{member.birthdate}</TableCell>
+                      <TableCell>{member.age}</TableCell>
+                      <TableCell>{member.gender}</TableCell>
+                      <TableCell>
+                        <Button variant="outline" size="sm">
+                          <Eye className="h-4 w-4 mr-1" />
+                          View Record
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
               </TableBody>
             </Table>
           </div>
@@ -213,32 +212,41 @@ const Borrowers: React.FC = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {loanRecords.map((record) => (
-                  <TableRow key={record.id}>
-                    <TableCell>{getStatusBadge(record.status)}</TableCell>
-                    <TableCell className="font-medium">{record.borrower}</TableCell>
-                    <TableCell className="font-mono">{record.loanId}</TableCell>
-                    <TableCell className="font-medium">{record.amount}</TableCell>
-                    <TableCell>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm">
-                          <Eye className="h-4 w-4 mr-1" />
-                          View
-                        </Button>
-                        {record.status === 'Pending' && (
-                          <>
-                            <Button size="sm" className="btn-success">
-                              Approve
-                            </Button>
-                            <Button variant="destructive" size="sm">
-                              Reject
-                            </Button>
-                          </>
-                        )}
-                      </div>
+                {loanRecords.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={5} className="text-center py-8">
+                      <p className="text-muted-foreground">No loan records found</p>
+                      <p className="text-sm text-muted-foreground mt-1">Loan records will appear here once created</p>
                     </TableCell>
                   </TableRow>
-                ))}
+                ) : (
+                  loanRecords.map((record) => (
+                    <TableRow key={record.id}>
+                      <TableCell>{getStatusBadge(record.status)}</TableCell>
+                      <TableCell className="font-medium">{record.borrower}</TableCell>
+                      <TableCell className="font-mono">{record.loanId}</TableCell>
+                      <TableCell className="font-medium">{record.amount}</TableCell>
+                      <TableCell>
+                        <div className="flex gap-2">
+                          <Button variant="outline" size="sm">
+                            <Eye className="h-4 w-4 mr-1" />
+                            View
+                          </Button>
+                          {record.status === 'Pending' && (
+                            <>
+                              <Button size="sm" className="btn-success">
+                                Approve
+                              </Button>
+                              <Button variant="destructive" size="sm">
+                                Reject
+                              </Button>
+                            </>
+                          )}
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
               </TableBody>
             </Table>
           </div>

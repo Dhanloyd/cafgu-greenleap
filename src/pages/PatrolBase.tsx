@@ -7,14 +7,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Plus, Edit, Trash2, Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-// Mock data
-const patrolBases = [
-  { id: 1, name: 'Alpha Base', location: 'Northern Sector', commandOfficer: 'Capt. Juan Santos' },
-  { id: 2, name: 'Bravo Base', location: 'Eastern Sector', commandOfficer: 'Lt. Maria Garcia' },
-  { id: 3, name: 'Charlie Base', location: 'Western Sector', commandOfficer: 'Sgt. Pedro Rodriguez' },
-  { id: 4, name: 'Delta Base', location: 'Southern Sector', commandOfficer: 'Capt. Ana Cruz' },
-  { id: 5, name: 'Echo Base', location: 'Central Sector', commandOfficer: 'Lt. Carlos Lopez' },
-];
+// Empty data - ready for database integration
+const patrolBases: any[] = [];
 
 const PatrolBase: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');

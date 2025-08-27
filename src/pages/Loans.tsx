@@ -9,39 +9,10 @@ import { Badge } from '@/components/ui/badge';
 import { Plus, Calculator, FileText, Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-// Mock data
-const members = [
-  { id: 1, name: 'Juan Dela Cruz', membershipNumber: 'M001' },
-  { id: 2, name: 'Maria Santos', membershipNumber: 'M002' },
-  { id: 3, name: 'Pedro Rodriguez', membershipNumber: 'M003' },
-];
-
-const patrolBases = ['Alpha Base', 'Bravo Base', 'Charlie Base', 'Delta Base', 'Echo Base'];
-
-const loans = [
-  {
-    id: 1,
-    loanId: 'LOAN-001',
-    member: 'Juan Dela Cruz',
-    patrolBase: 'Alpha Base',
-    principal: 50000,
-    monthlyPayment: 5000,
-    status: 'Active',
-    dateApproved: '2024-08-01',
-    maturityDate: '2024-10-01'
-  },
-  {
-    id: 2,
-    loanId: 'LOAN-002',
-    member: 'Maria Santos',
-    patrolBase: 'Bravo Base',
-    principal: 35000,
-    monthlyPayment: 3500,
-    status: 'Pending',
-    dateApproved: '',
-    maturityDate: ''
-  },
-];
+// Empty data - ready for database integration
+const members: any[] = [];
+const patrolBases: string[] = [];
+const loans: any[] = [];
 
 const Loans: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');

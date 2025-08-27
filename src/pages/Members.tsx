@@ -9,35 +9,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Plus, Search, Edit, Trash2, Upload } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-// Mock data
-const members = [
-  { 
-    id: 1, 
-    lastName: 'Dela Cruz', 
-    firstName: 'Juan', 
-    middleName: 'Santos',
-    address: '123 Main St, Zambales',
-    tin: '123-456-789-000',
-    dateOfBirth: '1985-05-15',
-    age: 38,
-    gender: 'Male',
-    civilStatus: 'Married',
-    occupation: 'CAFGU Member'
-  },
-  { 
-    id: 2, 
-    lastName: 'Santos', 
-    firstName: 'Maria', 
-    middleName: 'Garcia',
-    address: '456 Oak Ave, Zambales',
-    tin: '234-567-890-111',
-    dateOfBirth: '1990-08-22',
-    age: 33,
-    gender: 'Female',
-    civilStatus: 'Single',
-    occupation: 'CAFGU Member'
-  },
-];
+// Empty data - ready for database integration
+const members: any[] = [];
 
 const religionOptions = ['Catholic', 'Protestant', 'Islam', 'Buddhism', 'Others'];
 const genderOptions = ['Male', 'Female'];

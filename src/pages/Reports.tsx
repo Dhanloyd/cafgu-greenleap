@@ -7,40 +7,11 @@ import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, Cart
 import { FileText, Download, Printer, Filter, Calendar } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-// Mock data for reports
-const loanSummaryData = [
-  { month: 'Jan', approved: 15, disbursed: 12, collected: 145000 },
-  { month: 'Feb', approved: 18, disbursed: 16, collected: 167000 },
-  { month: 'Mar', approved: 22, disbursed: 20, collected: 189000 },
-  { month: 'Apr', approved: 19, disbursed: 17, collected: 156000 },
-  { month: 'May', approved: 25, disbursed: 23, collected: 198000 },
-  { month: 'Jun', approved: 28, disbursed: 26, collected: 234000 },
-  { month: 'Jul', approved: 24, disbursed: 22, collected: 210000 },
-  { month: 'Aug', approved: 26, disbursed: 24, collected: 245000 },
-];
-
-const loanStatusData = [
-  { name: 'Active Loans', value: 156, color: '#22c55e' },
-  { name: 'Pending', value: 23, color: '#f59e0b' },
-  { name: 'Completed', value: 89, color: '#6b7280' },
-  { name: 'Overdue', value: 12, color: '#ef4444' },
-];
-
-const patrolBaseData = [
-  { base: 'Alpha Base', members: 45, activeLoans: 23, totalAmount: 1250000 },
-  { base: 'Bravo Base', members: 38, activeLoans: 19, totalAmount: 985000 },
-  { base: 'Charlie Base', members: 42, activeLoans: 21, totalAmount: 1150000 },
-  { base: 'Delta Base', members: 51, activeLoans: 28, totalAmount: 1450000 },
-  { base: 'Echo Base', members: 35, activeLoans: 17, totalAmount: 890000 },
-];
-
-const topBorrowersData = [
-  { name: 'Juan Dela Cruz', loanAmount: 150000, payments: 12, status: 'Good' },
-  { name: 'Maria Santos', loanAmount: 125000, payments: 8, status: 'Good' },
-  { name: 'Pedro Rodriguez', loanAmount: 100000, payments: 6, status: 'Fair' },
-  { name: 'Ana Garcia', loanAmount: 95000, payments: 9, status: 'Good' },
-  { name: 'Carlos Lopez', loanAmount: 85000, payments: 4, status: 'Poor' },
-];
+// Empty data - ready for database integration
+const loanSummaryData: any[] = [];
+const loanStatusData: any[] = [];
+const patrolBaseData: any[] = [];
+const topBorrowersData: any[] = [];
 
 const Reports: React.FC = () => {
   const [selectedPeriod, setSelectedPeriod] = useState('monthly');
@@ -161,8 +132,8 @@ const Reports: React.FC = () => {
           <CardContent className="p-6">
             <div className="text-center">
               <p className="text-sm font-medium text-muted-foreground">Total Loans YTD</p>
-              <p className="text-3xl font-bold text-primary">187</p>
-              <p className="text-xs text-success">+15.3% from last year</p>
+              <p className="text-3xl font-bold text-primary">0</p>
+              <p className="text-xs text-muted-foreground">No data available</p>
             </div>
           </CardContent>
         </Card>
@@ -171,8 +142,8 @@ const Reports: React.FC = () => {
           <CardContent className="p-6">
             <div className="text-center">
               <p className="text-sm font-medium text-muted-foreground">Total Disbursed</p>
-              <p className="text-3xl font-bold text-primary">₱12.4M</p>
-              <p className="text-xs text-success">+22.1% from last year</p>
+              <p className="text-3xl font-bold text-primary">₱0.00</p>
+              <p className="text-xs text-muted-foreground">No data available</p>
             </div>
           </CardContent>
         </Card>
@@ -181,8 +152,8 @@ const Reports: React.FC = () => {
           <CardContent className="p-6">
             <div className="text-center">
               <p className="text-sm font-medium text-muted-foreground">Collections YTD</p>
-              <p className="text-3xl font-bold text-primary">₱9.8M</p>
-              <p className="text-xs text-success">+18.7% from last year</p>
+              <p className="text-3xl font-bold text-primary">₱0.00</p>
+              <p className="text-xs text-muted-foreground">No data available</p>
             </div>
           </CardContent>
         </Card>
@@ -191,8 +162,8 @@ const Reports: React.FC = () => {
           <CardContent className="p-6">
             <div className="text-center">
               <p className="text-sm font-medium text-muted-foreground">Outstanding Balance</p>
-              <p className="text-3xl font-bold text-warning">₱2.6M</p>
-              <p className="text-xs text-destructive">+5.2% from last month</p>
+              <p className="text-3xl font-bold text-primary">₱0.00</p>
+              <p className="text-xs text-muted-foreground">No data available</p>
             </div>
           </CardContent>
         </Card>

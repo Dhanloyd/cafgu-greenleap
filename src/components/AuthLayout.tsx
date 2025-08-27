@@ -215,6 +215,23 @@ const AuthLayout: React.FC = () => {
                 </Button>
               </form>
 
+              {isLogin && (
+                <div className="text-center mb-4">
+                  <button
+                    type="button"
+                    className="text-sm text-primary hover:text-primary-dark transition-colors"
+                    onClick={() => {
+                      toast({
+                        title: "Password Reset",
+                        description: "Please contact your administrator for password reset assistance.",
+                      });
+                    }}
+                  >
+                    Forgot Password?
+                  </button>
+                </div>
+              )}
+
               <div className="mt-6 text-center">
                 <button
                   onClick={() => setIsLogin(!isLogin)}
@@ -226,14 +243,6 @@ const AuthLayout: React.FC = () => {
                   }
                 </button>
               </div>
-
-              {isLogin && (
-                <div className="mt-4 p-3 bg-muted rounded-lg text-sm text-muted-foreground text-center">
-                  <strong>Demo Credentials:</strong><br />
-                  Username: admin<br />
-                  Password: admin
-                </div>
-              )}
             </CardContent>
           </Card>
         </div>

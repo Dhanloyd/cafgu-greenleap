@@ -51,28 +51,32 @@ const Dashboard: React.FC = () => {
       <div className="page-header">
         <div>
           <h1 className="page-title">Dashboard</h1>
-          <p className="text-muted-foreground">Welcome back! Here's your lending system overview.</p>
+          <p className="page-subtitle">Welcome back! Here's your lending system overview.</p>
         </div>
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+      <div className="grid-stats mb-6 sm:mb-8">
         {kpiData.map((kpi, index) => (
-          <Card key={index} className="card-stat hover:scale-105 transition-transform duration-200">
-            <CardContent className="p-6">
+          <Card key={index} className="card-stat">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground">{kpi.title}</p>
-                  <p className="text-2xl font-bold text-foreground">{kpi.value}</p>
-                  <p className={`text-xs flex items-center gap-1 mt-1 ${
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs sm:text-sm font-medium text-muted-foreground truncate">
+                    {kpi.title}
+                  </p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground mt-1">
+                    {kpi.value}
+                  </p>
+                  <p className={`text-xs flex items-center gap-1 mt-2 ${
                     kpi.trend === 'up' ? 'text-success' : 'text-destructive'
                   }`}>
                     <TrendingUp className={`h-3 w-3 ${kpi.trend === 'down' ? 'rotate-180' : ''}`} />
-                    {kpi.change}
+                    <span className="truncate">{kpi.change}</span>
                   </p>
                 </div>
-                <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <kpi.icon className="h-6 w-6 text-primary" />
+                <div className="h-10 w-10 sm:h-12 sm:w-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 ml-3">
+                  <kpi.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
               </div>
             </CardContent>
@@ -81,33 +85,36 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid-charts mb-6">
         {/* Per Patrol Base Loans Chart */}
         <Card className="card-dashboard">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BarChart className="h-5 w-5 text-primary" />
-              Per Patrol Base Loans
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+              <BarChart className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+              <span className="truncate">Per Patrol Base Loans</span>
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="pb-4">
+            <ResponsiveContainer width="100%" height={250}>
               <BarChart data={patrolBaseData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                 <XAxis 
                   dataKey="name" 
                   stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
+                  fontSize={11}
+                  tick={{ fontSize: 11 }}
                 />
                 <YAxis 
                   stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
+                  fontSize={11}
+                  tick={{ fontSize: 11 }}
                 />
                 <Tooltip 
                   contentStyle={{ 
                     backgroundColor: 'hsl(var(--card))',
                     border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px'
+                    borderRadius: '8px',
+                    fontSize: '14px'
                   }}
                 />
                 <Bar 
@@ -117,42 +124,44 @@ const Dashboard: React.FC = () => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            
           </CardContent>
           {patrolBaseData.length === 0 && (
-            <div className="px-6 pb-6">
-              <p className="text-center text-muted-foreground">No data available</p>
+            <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+              <p className="text-center text-muted-foreground text-sm">No data available</p>
             </div>
           )}
         </Card>
 
         {/* Monthly Collection Chart */}
         <Card className="card-dashboard">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-primary" />
-              Per Month Collection
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+              <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+              <span className="truncate">Per Month Collection</span>
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="pb-4">
+            <ResponsiveContainer width="100%" height={250}>
               <LineChart data={monthlyCollectionData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                 <XAxis 
                   dataKey="month" 
                   stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
+                  fontSize={11}
+                  tick={{ fontSize: 11 }}
                 />
                 <YAxis 
                   stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
+                  fontSize={11}
+                  tick={{ fontSize: 11 }}
                   tickFormatter={(value) => `₱${(value / 1000).toFixed(0)}k`}
                 />
                 <Tooltip 
                   contentStyle={{ 
                     backgroundColor: 'hsl(var(--card))',
                     border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px'
+                    borderRadius: '8px',
+                    fontSize: '14px'
                   }}
                   formatter={(value) => [`₱${value.toLocaleString()}`, 'Amount']}
                 />
@@ -166,25 +175,26 @@ const Dashboard: React.FC = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            
           </CardContent>
           {monthlyCollectionData.length === 0 && (
-            <div className="px-6 pb-6">
-              <p className="text-center text-muted-foreground">No data available</p>
+            <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+              <p className="text-center text-muted-foreground text-sm">No data available</p>
             </div>
           )}
         </Card>
       </div>
 
       {/* Recent Activity */}
-      <Card className="card-dashboard mt-6">
+      <Card className="card-dashboard">
         <CardHeader>
-          <CardTitle>Recent Activity</CardTitle>
+          <CardTitle className="text-base sm:text-lg">Recent Activity</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-center py-8">
+          <div className="text-center py-6 sm:py-8">
             <p className="text-muted-foreground">No recent activity</p>
-            <p className="text-sm text-muted-foreground mt-1">Activity will appear here once you start using the system</p>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Activity will appear here once you start using the system
+            </p>
           </div>
         </CardContent>
       </Card>

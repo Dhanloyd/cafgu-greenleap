@@ -46,16 +46,16 @@ const SidebarContent: React.FC<SidebarProps> = ({ className }) => {
   const { logout, user } = useAuth();
 
   return (
-    <div className={cn('pb-12 w-64', className)}>
-      <div className="space-y-4 py-4">
+    <div className={cn('pb-12 w-64 h-full', className)}>
+      <div className="space-y-4 py-4 h-full flex flex-col">
         {/* Logo */}
-        <div className="px-6 py-2">
+        <div className="px-6 py-2 flex-shrink-0">
           <h2 className="text-2xl font-bold text-sidebar-foreground">CZMPC</h2>
           <p className="text-sm text-sidebar-foreground/80">Lending System</p>
         </div>
 
         {/* Navigation */}
-        <div className="px-3 py-2">
+        <div className="px-3 py-2 flex-1 overflow-y-auto">
           <div className="space-y-1">
             {navigation.map((item) => {
               const isActive = location.pathname === item.href;
@@ -76,13 +76,17 @@ const SidebarContent: React.FC<SidebarProps> = ({ className }) => {
                   key={item.href}
                   to={item.href}
                   className={cn(
-                    'flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-all hover:text-sidebar-foreground',
+                    'flex items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200 hover:text-sidebar-foreground group',
                     isActive
                       ? 'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm'
                       : 'text-sidebar-foreground/80 hover:bg-sidebar-accent/50'
                   )}
                 >
-                  <item.icon className="mr-3 h-4 w-4" />
+                  <item.icon className={cn(
+                    'mr-3 h-4 w-4 transition-transform duration-200',
+                    'group-hover:scale-110',
+                    isActive && 'scale-110'
+                  )} />
                   {item.title}
                 </NavLink>
               );
@@ -91,18 +95,22 @@ const SidebarContent: React.FC<SidebarProps> = ({ className }) => {
         </div>
 
         {/* User Info & Logout */}
-        <div className="px-3 mt-auto">
-          <div className="bg-sidebar-accent/30 rounded-lg p-3 mb-3">
-            <p className="text-sm font-medium text-sidebar-foreground">{user?.username}</p>
-            <p className="text-xs text-sidebar-foreground/70">{user?.role}</p>
+        <div className="px-3 mt-auto flex-shrink-0">
+          <div className="bg-sidebar-accent/30 rounded-lg p-3 mb-3 transition-all duration-200 hover:bg-sidebar-accent/40">
+            <p className="text-sm font-medium text-sidebar-foreground truncate">
+              {user?.username || 'Admin User'}
+            </p>
+            <p className="text-xs text-sidebar-foreground/70">
+              {user?.role || 'Administrator'}
+            </p>
           </div>
           
           <Button
             onClick={logout}
             variant="ghost"
-            className="w-full justify-start text-sidebar-foreground/80 hover:text-sidebar-foreground hover:bg-sidebar-accent/50"
+            className="w-full justify-start text-sidebar-foreground/80 hover:text-sidebar-foreground hover:bg-sidebar-accent/50 transition-all duration-200 group"
           >
-            <LogOut className="mr-3 h-4 w-4" />
+            <LogOut className="mr-3 h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
             Sign Out
           </Button>
         </div>
@@ -114,7 +122,7 @@ const SidebarContent: React.FC<SidebarProps> = ({ className }) => {
 // Desktop Sidebar
 export const Sidebar: React.FC = () => {
   return (
-    <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 z-50 bg-sidebar border-r border-sidebar-border">
+    <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 z-50 bg-sidebar border-r border-sidebar-border shadow-[var(--shadow-lg)]">
       <SidebarContent />
     </div>
   );
@@ -128,12 +136,16 @@ export const MobileSidebar: React.FC = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="md:hidden h-8 w-8 hover:bg-muted/50 transition-colors"
         >
           <Menu className="h-5 w-5" />
+          <span className="sr-only">Toggle navigation menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="p-0 bg-sidebar">
+      <SheetContent 
+        side="left" 
+        className="p-0 bg-sidebar w-64 border-sidebar-border"
+      >
         <SidebarContent />
       </SheetContent>
     </Sheet>

@@ -117,12 +117,13 @@ const Dashboard: React.FC = () => {
                 />
               </BarChart>
             </ResponsiveContainer>
-            {patrolBaseData.length === 0 && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-muted-foreground">No data available</p>
-              </div>
-            )}
+            
           </CardContent>
+          {patrolBaseData.length === 0 && (
+            <div className="px-6 pb-6">
+              <p className="text-center text-muted-foreground">No data available</p>
+            </div>
+          )}
         </Card>
 
         {/* Monthly Collection Chart */}
@@ -165,12 +166,13 @@ const Dashboard: React.FC = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
-            {monthlyCollectionData.length === 0 && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-muted-foreground">No data available</p>
-              </div>
-            )}
+            
           </CardContent>
+          {monthlyCollectionData.length === 0 && (
+            <div className="px-6 pb-6">
+              <p className="text-center text-muted-foreground">No data available</p>
+            </div>
+          )}
         </Card>
       </div>
 

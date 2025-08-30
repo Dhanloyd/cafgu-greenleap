@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
-import authBg from '@/assets/new-auth-background.jpg';
+import authBg from '@/assets/auth-background.jpg';
 import baangLogo from '@/assets/baang-tungawan-logo.png';
 
 const AuthLayout: React.FC = () => {

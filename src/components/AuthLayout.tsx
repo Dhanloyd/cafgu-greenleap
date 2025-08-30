@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 const authBg = '/lovable-uploads/f79c8a91-7753-4751-8606-1624c268d377.png';
-import baangLogo from '@/assets/baang-tungawan-logo.png';
+import bayanLogo from '@/assets/bayan-tungawan-logo.png';
 
 const AuthLayout: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -83,7 +83,7 @@ const AuthLayout: React.FC = () => {
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
               <img 
-                src={baangLogo} 
+                src={bayanLogo} 
                 alt="Bayan ng Tungawan Logo" 
                 className="h-20 w-20 object-contain"
               />

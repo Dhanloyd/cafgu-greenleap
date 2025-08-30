@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
-import authBg from '@/assets/auth-background.jpg';
+import authBg from '@/assets/new-auth-background.jpg';
 import baangLogo from '@/assets/baang-tungawan-logo.png';
 
 const AuthLayout: React.FC = () => {
@@ -84,11 +84,11 @@ const AuthLayout: React.FC = () => {
             <div className="flex justify-center mb-4">
               <img 
                 src={baangLogo} 
-                alt="Baang Tungawan Logo" 
+                alt="Bayan ng Tungawan Logo" 
                 className="h-20 w-20 object-contain"
               />
             </div>
-            <h2 className="text-2xl font-bold text-primary mb-2">Baang Tungawan</h2>
+            <h2 className="text-2xl font-bold text-primary mb-2">Bayan ng Tungawan</h2>
           </div>
 
           <Card className="border-border/50 shadow-[var(--shadow-soft)]">

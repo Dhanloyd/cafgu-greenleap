@@ -41,6 +41,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       localStorage.setItem('cafgu_user', JSON.stringify(userData));
       return true;
     }
+    if (username === 'loanofficer' && password === 'admin') {
+      const userData = { username: 'loanofficer', role: 'Loan Officer' };
+      setUser(userData);
+      localStorage.setItem('cafgu_user', JSON.stringify(userData));
+      return true;
+    }
     return false;
   };
 

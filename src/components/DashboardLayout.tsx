@@ -29,7 +29,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             <MobileSidebar />
             <div className="min-w-0 flex-1">
               <h1 className="text-lg sm:text-xl font-semibold text-foreground truncate">
-                CAFGU Lending System
+                Lending System
               </h1>
               <p className="text-xs text-muted-foreground hidden sm:block">
                 Financial Management System

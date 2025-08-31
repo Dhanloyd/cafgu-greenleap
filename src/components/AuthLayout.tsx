@@ -50,7 +50,7 @@ const AuthLayout: React.FC = () => {
     <div className="min-h-screen flex">
       {/* Left Side - Background Image */}
       <div 
-        className="hidden lg:flex lg:w-1/2 bg-cover bg-center relative"
+        className="hidden lg:flex lg:w-1/2 bg-contain bg-center bg-no-repeat relative"
         style={{ backgroundImage: `url(${authBg})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary-dark/60" />

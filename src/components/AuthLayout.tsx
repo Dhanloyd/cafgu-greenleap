@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 const authBg = '/lovable-uploads/f79c8a91-7753-4751-8606-1624c268d377.png';
-import bayanLogo from '@/assets/bayan-tungawan-logo.png';
+const bayanLogo = '/lovable-uploads/c220bffd-33c5-49db-b365-5c1a2681bdc8.png';
 
 const AuthLayout: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -88,7 +88,7 @@ const AuthLayout: React.FC = () => {
                 className="h-20 w-20 object-contain"
               />
             </div>
-            <h2 className="text-2xl font-bold text-primary mb-2">Bayan ng Tungawan</h2>
+            <h2 className="text-2xl font-bold text-primary mb-2">Bayang Tungawan</h2>
           </div>
 
           <Card className="border-border/50 shadow-[var(--shadow-soft)]">

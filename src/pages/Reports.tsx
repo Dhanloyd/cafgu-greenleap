@@ -6,35 +6,87 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { FileText, Download, Printer, Filter, Calendar } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-// Sample data for demonstration - matches the document format
-const sampleReportData = [
+// Sample data for CAFGU ZAMPEN COOPERATIVE loan deduction report
+const sampleLoanData = [
   {
-    particulars: "CASH/DEMAND BANK DEPOSIT",
-    june: "25,000.00",
-    july: "30,000.00", 
-    august: "35,000.00",
-    total: "90,000.00"
+    nr: 1,
+    patrolBase: "DCAO",
+    names: "CAA EDEN CADUHADA",
+    principalLoan: "5,000.00",
+    prevPayments: "NEG",
+    principalDeduct: "4,040.00",
+    monthInt: "150.00",
+    procFee: "25.00",
+    zampenBenefits: "25.00",
+    unpdShareCapital: "100.00",
+    totalDeduct: "4,340.00",
+    balance: "2,000.00",
+    share20122024: "3,800.00",
+    remarks: ""
   },
   {
-    particulars: "CASH SAVINGS DEPOSIT",
-    june: "15,000.00",
-    july: "20,000.00",
-    august: "25,000.00", 
-    total: "60,000.00"
+    nr: 2,
+    patrolBase: "DCAO",
+    names: "CAA JOHANNA DODIN",
+    principalLoan: "5,000.00",
+    prevPayments: "NEG",
+    principalDeduct: "4,590.00",
+    monthInt: "150.00",
+    procFee: "25.00",
+    zampenBenefits: "25.00",
+    unpdShareCapital: "100.00",
+    totalDeduct: "4,890.00",
+    balance: "",
+    share20122024: "3,800.00",
+    remarks: ""
   },
   {
-    particulars: "CASH SHARE CAPITAL FUND",
-    june: "10,000.00",
-    july: "15,000.00",
-    august: "20,000.00",
-    total: "45,000.00"
+    nr: 3,
+    patrolBase: "DCAO",
+    names: "CAA BRITNEY CABANLIT",
+    principalLoan: "10,000.00",
+    prevPayments: "NEG",
+    principalDeduct: "4,840.00",
+    monthInt: "300.00",
+    procFee: "25.00",
+    zampenBenefits: "25.00",
+    unpdShareCapital: "200.00",
+    totalDeduct: "5,390.00",
+    balance: "2,000.00",
+    share20122024: "3,800.00",
+    remarks: ""
   },
   {
-    particulars: "CASH EDUCATION DEVELOPMENT",
-    june: "5,000.00",
-    july: "7,500.00",
-    august: "10,000.00",
-    total: "22,500.00"
+    nr: 4,
+    patrolBase: "DCAO",
+    names: "CAA TAMULA ISAGANI",
+    principalLoan: "20,000.00",
+    prevPayments: "NEG",
+    principalDeduct: "4,480.00",
+    monthInt: "600.00",
+    procFee: "25.00",
+    zampenBenefits: "25.00",
+    unpdShareCapital: "400.00",
+    totalDeduct: "5,530.00",
+    balance: "17,000.00",
+    share20122024: "3,800.00",
+    remarks: ""
+  },
+  {
+    nr: 5,
+    patrolBase: "DCAO",
+    names: "CAA ANGELA QUINTERO",
+    principalLoan: "10,000.00",
+    prevPayments: "NEG",
+    principalDeduct: "3,700.00",
+    monthInt: "300.00",
+    procFee: "25.00",
+    zampenBenefits: "25.00",
+    unpdShareCapital: "200.00",
+    totalDeduct: "4,250.00",
+    balance: "2,000.00",
+    share20122024: "3,800.00",
+    remarks: ""
   }
 ];
 
@@ -61,19 +113,17 @@ const Reports: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Print Header - Only visible when printing */}
-      <div className="print:block hidden">
-        <div className="text-center border-b-2 border-primary pb-4 mb-6">
-          <img 
-            src="/lovable-uploads/c220bffd-33c5-49db-b365-5c1a2681bdc8.png" 
-            alt="Bayang Tungawan Logo" 
-            className="mx-auto h-16 w-16 mb-2"
-          />
-          <h1 className="text-xl font-bold">ZAMBOANGA SIBUGAY AREA</h1>
-          <h2 className="text-lg font-semibold">BAYANG TUNGAWAN POLICE STATION</h2>
-          <p className="text-sm text-muted-foreground">Financial Report - {selectedYear}</p>
+        {/* Print Header - Only visible when printing */}
+        <div className="print:block hidden">
+          <div className="text-center pb-4 mb-6">
+            <h1 className="text-xl font-bold">CAFGU ZAMPEN COOPERATIVE</h1>
+            <p className="text-sm">So DK, Brgy Libertad, Municipality of Tungawan,</p>
+            <p className="text-sm">Zamboanga Sibugay Province</p>
+            <p className="text-sm">CDA REG No. 9520-10900000000-256-00</p>
+            <p className="text-sm">TIN No. 477424593000</p>
+            <p className="text-sm font-bold mt-2">Cash loan Deduction as Of JULY 2025</p>
+          </div>
         </div>
-      </div>
 
       <div className="page-container print:p-4 print:max-w-none">
         {/* Screen Header */}
@@ -161,74 +211,62 @@ const Reports: React.FC = () => {
 
         {/* Official Report Document */}
         <div className="bg-white print:bg-white border print:border-0 rounded-lg print:rounded-none p-6 print:p-0 shadow-sm print:shadow-none">
-          {/* Report Title */}
-          <div className="text-center mb-6 print:mb-4">
-            <h2 className="text-2xl print:text-xl font-bold text-foreground mb-2">
-              CASH TOTAL POSITION AS OF JUNE 2024
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              TIN No. 247498900 | Cash Count Deduction as of June 2025
-            </p>
-          </div>
-
-          {/* Main Financial Table */}
+          {/* Loan Deduction Table */}
           <div className="overflow-x-auto">
-            <Table className="border-collapse border border-border">
+            <Table className="border-collapse border border-border text-xs">
               <TableHeader>
                 <TableRow className="bg-muted/50">
-                  <TableHead className="border border-border text-center font-bold py-3">
-                    PARTICULARS
-                  </TableHead>
-                  <TableHead className="border border-border text-center font-bold">
-                    JUNE
-                  </TableHead>
-                  <TableHead className="border border-border text-center font-bold">
-                    JULY
-                  </TableHead>
-                  <TableHead className="border border-border text-center font-bold">
-                    AUGUST
-                  </TableHead>
-                  <TableHead className="border border-border text-center font-bold">
-                    TOTAL
-                  </TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">NR</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PATROL BASE</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">NAMES</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PRINCIPAL LOAN</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PREV. PAYMENTS</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PRINCIPAL DEDUCT.</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">1 MONTH INT.</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PROC. FEE</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">ZAMPEN BENEFITS</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">UNPD SHARE CAPITAL</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">TOTAL DEDUCT.</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">BALANCE</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">SHARE 2012-2024</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">REMARKS</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {sampleReportData.map((row, index) => (
-                  <TableRow key={index} className="hover:bg-muted/25">
-                    <TableCell className="border border-border font-medium py-2 px-3">
-                      {row.particulars}
-                    </TableCell>
-                    <TableCell className="border border-border text-right py-2 px-3 font-mono">
-                      ₱{row.june}
-                    </TableCell>
-                    <TableCell className="border border-border text-right py-2 px-3 font-mono">
-                      ₱{row.july}
-                    </TableCell>
-                    <TableCell className="border border-border text-right py-2 px-3 font-mono">
-                      ₱{row.august}
-                    </TableCell>
-                    <TableCell className="border border-border text-right py-2 px-3 font-mono font-bold">
-                      ₱{row.total}
-                    </TableCell>
+                {sampleLoanData.map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="border border-border text-center py-1 px-1 text-xs">{row.nr}</TableCell>
+                    <TableCell className="border border-border text-center py-1 px-1 text-xs">{row.patrolBase}</TableCell>
+                    <TableCell className="border border-border py-1 px-1 text-xs">{row.names}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.principalLoan}</TableCell>
+                    <TableCell className="border border-border text-center py-1 px-1 text-xs">{row.prevPayments}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.principalDeduct}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.monthInt}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.procFee}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.zampenBenefits}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.unpdShareCapital}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs font-bold">{row.totalDeduct}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.balance}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.share20122024}</TableCell>
+                    <TableCell className="border border-border text-center py-1 px-1 text-xs">{row.remarks}</TableCell>
                   </TableRow>
                 ))}
+                {/* Total Row */}
                 <TableRow className="bg-muted/50 font-bold">
-                  <TableCell className="border border-border py-3 px-3">
-                    TOTAL
-                  </TableCell>
-                  <TableCell className="border border-border text-right py-3 px-3 font-mono">
-                    ₱115,000.00
-                  </TableCell>
-                  <TableCell className="border border-border text-right py-3 px-3 font-mono">
-                    ₱142,500.00
-                  </TableCell>
-                  <TableCell className="border border-border text-right py-3 px-3 font-mono">
-                    ₱180,000.00
-                  </TableCell>
-                  <TableCell className="border border-border text-right py-3 px-3 font-mono text-lg">
-                    ₱437,500.00
-                  </TableCell>
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs"></TableCell>
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs"></TableCell>
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs"></TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs">120,000.00</TableCell>
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs">-</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs">62,460.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs">3,600.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs">325.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs">325.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs">2,400.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs">69,110.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs">50,000.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs">49,100.00</TableCell>
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs">-</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -238,25 +276,19 @@ const Reports: React.FC = () => {
           <div className="mt-8 print:mt-6 grid grid-cols-1 md:grid-cols-3 gap-8 print:gap-4">
             <div className="text-center">
               <div className="border-b border-border w-48 mx-auto mb-2 h-12"></div>
-              <p className="text-sm font-medium">Prepared by:</p>
-              <p className="text-xs text-muted-foreground">Finance Officer</p>
+              <p className="text-sm font-bold">FRANCIS MARC G ALVAREZ</p>
+              <p className="text-xs">BOOKKEEPER</p>
             </div>
             <div className="text-center">
               <div className="border-b border-border w-48 mx-auto mb-2 h-12"></div>
-              <p className="text-sm font-medium">Reviewed by:</p>
-              <p className="text-xs text-muted-foreground">Station Commander</p>
+              <p className="text-sm font-bold">TRIMETEO D ANTIGA JR</p>
+              <p className="text-xs">ZAMPEN MANAGER</p>
             </div>
             <div className="text-center">
               <div className="border-b border-border w-48 mx-auto mb-2 h-12"></div>
-              <p className="text-sm font-medium">Approved by:</p>
-              <p className="text-xs text-muted-foreground">Area Director</p>
+              <p className="text-sm font-bold">IRISH C DINALO</p>
+              <p className="text-xs">TREASURER/COLLECTOR</p>
             </div>
-          </div>
-
-          {/* Footer */}
-          <div className="mt-6 print:mt-4 text-center text-xs text-muted-foreground border-t pt-4">
-            <p>Document generated on {new Date().toLocaleDateString()}</p>
-            <p>Bayang Tungawan Police Station Financial Report System</p>
           </div>
         </div>
       </div>

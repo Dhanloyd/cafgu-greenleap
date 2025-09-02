@@ -114,15 +114,13 @@ const Reports: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
         {/* Print Header - Only visible when printing */}
-        <div className="print:block hidden">
-          <div className="text-center pb-4 mb-6">
-            <h1 className="text-xl font-bold">CAFGU ZAMPEN COOPERATIVE</h1>
-            <p className="text-sm">So DK, Brgy Libertad, Municipality of Tungawan,</p>
-            <p className="text-sm">Zamboanga Sibugay Province</p>
-            <p className="text-sm">CDA REG No. 9520-10900000000-256-00</p>
-            <p className="text-sm">TIN No. 477424593000</p>
-            <p className="text-sm font-bold mt-2">Cash loan Deduction as Of JULY 2025</p>
-          </div>
+        <div className="print:block hidden print:text-center print:mb-4">
+          <h1 className="print:text-lg print:font-bold print:mb-1">CAFGU ZAMPEN COOPERATIVE</h1>
+          <p className="print:text-sm print:mb-0">So DK, Brgy Libertad, Municipality of Tungawan,</p>
+          <p className="print:text-sm print:mb-0">Zamboanga Sibugay Province</p>
+          <p className="print:text-sm print:mb-0">CDA REG No. 9520-10900000000-256-00</p>
+          <p className="print:text-sm print:mb-0">TIN No. 477424593000</p>
+          <p className="print:text-sm print:font-bold print:mt-2 print:mb-3">Cash loan Deduction as Of JULY 2025</p>
         </div>
 
       <div className="page-container print:p-4 print:max-w-none">
@@ -211,83 +209,82 @@ const Reports: React.FC = () => {
 
         {/* Official Report Document */}
         <div className="bg-white print:bg-white border print:border-0 rounded-lg print:rounded-none p-6 print:p-0 shadow-sm print:shadow-none">
-          {/* Loan Deduction Table */}
-          <div className="overflow-x-auto">
-            <Table className="border-collapse border border-border text-xs">
+          <div className="overflow-x-auto print:overflow-visible">
+            <Table className="border-collapse border border-border text-xs print:text-[10px] w-full print:w-full">
               <TableHeader>
-                <TableRow className="bg-muted/50">
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">NR</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PATROL BASE</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">NAMES</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PRINCIPAL LOAN</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PREV. PAYMENTS</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PRINCIPAL DEDUCT.</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">1 MONTH INT.</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">PROC. FEE</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">ZAMPEN BENEFITS</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">UNPD SHARE CAPITAL</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">TOTAL DEDUCT.</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">BALANCE</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">SHARE 2012-2024</TableHead>
-                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs">REMARKS</TableHead>
+                <TableRow className="bg-muted/50 print:bg-white">
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">NR</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">PATROL BASE</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">NAMES</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">PRINCIPAL LOAN</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">PREV. PAYMENTS</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">PRINCIPAL DEDUCT.</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">1 MONTH INT.</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">PROC. FEE</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">ZAMPEN BENEFITS</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">UNPD SHARE CAPITAL</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">TOTAL DEDUCT.</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">BALANCE</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">SHARE 2012-2024</TableHead>
+                  <TableHead className="border border-border text-center font-bold py-2 px-1 text-xs print:text-[8px] print:py-1">REMARKS</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {sampleLoanData.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell className="border border-border text-center py-1 px-1 text-xs">{row.nr}</TableCell>
-                    <TableCell className="border border-border text-center py-1 px-1 text-xs">{row.patrolBase}</TableCell>
-                    <TableCell className="border border-border py-1 px-1 text-xs">{row.names}</TableCell>
-                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.principalLoan}</TableCell>
-                    <TableCell className="border border-border text-center py-1 px-1 text-xs">{row.prevPayments}</TableCell>
-                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.principalDeduct}</TableCell>
-                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.monthInt}</TableCell>
-                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.procFee}</TableCell>
-                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.zampenBenefits}</TableCell>
-                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.unpdShareCapital}</TableCell>
-                    <TableCell className="border border-border text-right py-1 px-1 text-xs font-bold">{row.totalDeduct}</TableCell>
-                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.balance}</TableCell>
-                    <TableCell className="border border-border text-right py-1 px-1 text-xs">{row.share20122024}</TableCell>
-                    <TableCell className="border border-border text-center py-1 px-1 text-xs">{row.remarks}</TableCell>
+                  <TableRow key={index} className="print:h-6">
+                    <TableCell className="border border-border text-center py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.nr}</TableCell>
+                    <TableCell className="border border-border text-center py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.patrolBase}</TableCell>
+                    <TableCell className="border border-border py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.names}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.principalLoan}</TableCell>
+                    <TableCell className="border border-border text-center py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.prevPayments}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.principalDeduct}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.monthInt}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.procFee}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.zampenBenefits}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.unpdShareCapital}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs print:text-[9px] print:py-0.5 font-bold">{row.totalDeduct}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.balance}</TableCell>
+                    <TableCell className="border border-border text-right py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.share20122024}</TableCell>
+                    <TableCell className="border border-border text-center py-1 px-1 text-xs print:text-[9px] print:py-0.5">{row.remarks}</TableCell>
                   </TableRow>
                 ))}
                 {/* Total Row */}
-                <TableRow className="bg-muted/50 font-bold">
-                  <TableCell className="border border-border text-center py-2 px-1 text-xs"></TableCell>
-                  <TableCell className="border border-border text-center py-2 px-1 text-xs"></TableCell>
-                  <TableCell className="border border-border text-center py-2 px-1 text-xs"></TableCell>
-                  <TableCell className="border border-border text-right py-2 px-1 text-xs">120,000.00</TableCell>
-                  <TableCell className="border border-border text-center py-2 px-1 text-xs">-</TableCell>
-                  <TableCell className="border border-border text-right py-2 px-1 text-xs">62,460.00</TableCell>
-                  <TableCell className="border border-border text-right py-2 px-1 text-xs">3,600.00</TableCell>
-                  <TableCell className="border border-border text-right py-2 px-1 text-xs">325.00</TableCell>
-                  <TableCell className="border border-border text-right py-2 px-1 text-xs">325.00</TableCell>
-                  <TableCell className="border border-border text-right py-2 px-1 text-xs">2,400.00</TableCell>
-                  <TableCell className="border border-border text-right py-2 px-1 text-xs">69,110.00</TableCell>
-                  <TableCell className="border border-border text-right py-2 px-1 text-xs">50,000.00</TableCell>
-                  <TableCell className="border border-border text-right py-2 px-1 text-xs">49,100.00</TableCell>
-                  <TableCell className="border border-border text-center py-2 px-1 text-xs">-</TableCell>
+                <TableRow className="bg-muted/50 print:bg-white font-bold print:h-6">
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs print:text-[9px] print:py-0.5"></TableCell>
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs print:text-[9px] print:py-0.5"></TableCell>
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs print:text-[9px] print:py-0.5"></TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs print:text-[9px] print:py-0.5">120,000.00</TableCell>
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs print:text-[9px] print:py-0.5">-</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs print:text-[9px] print:py-0.5">62,460.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs print:text-[9px] print:py-0.5">3,600.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs print:text-[9px] print:py-0.5">325.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs print:text-[9px] print:py-0.5">325.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs print:text-[9px] print:py-0.5">2,400.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs print:text-[9px] print:py-0.5">69,110.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs print:text-[9px] print:py-0.5">50,000.00</TableCell>
+                  <TableCell className="border border-border text-right py-2 px-1 text-xs print:text-[9px] print:py-0.5">49,100.00</TableCell>
+                  <TableCell className="border border-border text-center py-2 px-1 text-xs print:text-[9px] print:py-0.5">-</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
           </div>
 
           {/* Signature Section */}
-          <div className="mt-8 print:mt-6 grid grid-cols-1 md:grid-cols-3 gap-8 print:gap-4">
+          <div className="mt-8 print:mt-4 grid grid-cols-1 md:grid-cols-3 gap-8 print:gap-4 print:text-center">
             <div className="text-center">
-              <div className="border-b border-border w-48 mx-auto mb-2 h-12"></div>
-              <p className="text-sm font-bold">FRANCIS MARC G ALVAREZ</p>
-              <p className="text-xs">BOOKKEEPER</p>
+              <div className="border-b border-border w-48 mx-auto mb-2 h-12 print:h-8 print:w-32"></div>
+              <p className="text-sm font-bold print:text-[10px] print:font-bold">FRANCIS MARC G ALVAREZ</p>
+              <p className="text-xs print:text-[9px]">BOOKKEEPER</p>
             </div>
             <div className="text-center">
-              <div className="border-b border-border w-48 mx-auto mb-2 h-12"></div>
-              <p className="text-sm font-bold">TRIMETEO D ANTIGA JR</p>
-              <p className="text-xs">ZAMPEN MANAGER</p>
+              <div className="border-b border-border w-48 mx-auto mb-2 h-12 print:h-8 print:w-32"></div>
+              <p className="text-sm font-bold print:text-[10px] print:font-bold">TRIMETEO D ANTIGA JR</p>
+              <p className="text-xs print:text-[9px]">ZAMPEN MANAGER</p>
             </div>
             <div className="text-center">
-              <div className="border-b border-border w-48 mx-auto mb-2 h-12"></div>
-              <p className="text-sm font-bold">IRISH C DINALO</p>
-              <p className="text-xs">TREASURER/COLLECTOR</p>
+              <div className="border-b border-border w-48 mx-auto mb-2 h-12 print:h-8 print:w-32"></div>
+              <p className="text-sm font-bold print:text-[10px] print:font-bold">IRISH C DINALO</p>
+              <p className="text-xs print:text-[9px]">TREASURER/COLLECTOR</p>
             </div>
           </div>
         </div>

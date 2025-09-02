@@ -115,12 +115,26 @@ const Reports: React.FC = () => {
     <div className="min-h-screen bg-background">
         {/* Print Header - Only visible when printing */}
         <div className="print:block hidden print:text-center print:mb-4">
-          <h1 className="print:text-lg print:font-bold print:mb-1">CAFGU ZAMPEN COOPERATIVE</h1>
-          <p className="print:text-sm print:mb-0">So DK, Brgy Libertad, Municipality of Tungawan,</p>
-          <p className="print:text-sm print:mb-0">Zamboanga Sibugay Province</p>
-          <p className="print:text-sm print:mb-0">CDA REG No. 9520-10900000000-256-00</p>
-          <p className="print:text-sm print:mb-0">TIN No. 477424593000</p>
-          <p className="print:text-sm print:font-bold print:mt-2 print:mb-3">Cash loan Deduction as Of JULY 2025</p>
+          <div className="print:flex print:items-center print:justify-center print:gap-8 print:mb-4">
+            <img 
+              src="/lovable-uploads/c220bffd-33c5-49db-b365-5c1a2681bdc8.png" 
+              alt="Bayang Tungawan Logo" 
+              className="print:h-16 print:w-16"
+            />
+            <div className="print:text-center">
+              <h1 className="print:text-lg print:font-bold print:mb-1">CAFGU ZAMPEN COOPERATIVE</h1>
+              <p className="print:text-sm print:mb-0">So DK, Brgy Libertad, Municipality of Tungawan,</p>
+              <p className="print:text-sm print:mb-0">Zamboanga Sibugay Province</p>
+              <p className="print:text-sm print:mb-0">CDA REG No. 9520-10900000000-256-00</p>
+              <p className="print:text-sm print:mb-0">TIN No. 477424593000</p>
+              <p className="print:text-sm print:font-bold print:mt-2 print:mb-3">Cash loan Deduction as Of JULY 2025</p>
+            </div>
+            <img 
+              src="/lovable-uploads/c220bffd-33c5-49db-b365-5c1a2681bdc8.png" 
+              alt="Bayang Tungawan Logo" 
+              className="print:h-16 print:w-16"
+            />
+          </div>
         </div>
 
       <div className="page-container print:p-4 print:max-w-none">
@@ -209,6 +223,29 @@ const Reports: React.FC = () => {
 
         {/* Official Report Document */}
         <div className="bg-white print:bg-white border print:border-0 rounded-lg print:rounded-none p-6 print:p-0 shadow-sm print:shadow-none">
+          {/* Screen Header - Only visible on screen */}
+          <div className="text-center mb-6 print:hidden">
+            <div className="flex items-center justify-center gap-8 mb-4">
+              <img 
+                src="/lovable-uploads/c220bffd-33c5-49db-b365-5c1a2681bdc8.png" 
+                alt="Bayang Tungawan Logo" 
+                className="h-16 w-16"
+              />
+              <div className="text-center">
+                <h1 className="text-xl font-bold mb-1">CAFGU ZAMPEN COOPERATIVE</h1>
+                <p className="text-sm mb-0">So DK, Brgy Libertad, Municipality of Tungawan,</p>
+                <p className="text-sm mb-0">Zamboanga Sibugay Province</p>
+                <p className="text-sm mb-0">CDA REG No. 9520-10900000000-256-00</p>
+                <p className="text-sm mb-0">TIN No. 477424593000</p>
+                <p className="text-sm font-bold mt-2 mb-3">Cash loan Deduction as Of JULY 2025</p>
+              </div>
+              <img 
+                src="/lovable-uploads/c220bffd-33c5-49db-b365-5c1a2681bdc8.png" 
+                alt="Bayang Tungawan Logo" 
+                className="h-16 w-16"
+              />
+            </div>
+          </div>
           <div className="overflow-x-auto print:overflow-visible">
             <Table className="border-collapse border border-border text-xs print:text-[10px] w-full print:w-full">
               <TableHeader>

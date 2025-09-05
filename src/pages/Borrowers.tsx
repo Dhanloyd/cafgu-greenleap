@@ -10,10 +10,75 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Eye, Plus, Search } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-// Empty data - ready for database integration
-const members: any[] = [];
-const loanRecords: any[] = [];
-const patrolBases: string[] = [];
+// Mock data for demonstration
+const members = [
+  {
+    id: 1,
+    tin: "123-456-789",
+    fullName: "Juan Cruz",
+    birthdate: "1985-03-15",
+    age: 39,
+    gender: "Male"
+  },
+  {
+    id: 2,
+    tin: "987-654-321",
+    fullName: "Maria Santos",
+    birthdate: "1990-07-22",
+    age: 34,
+    gender: "Female"
+  },
+  {
+    id: 3,
+    tin: "456-789-123",
+    fullName: "Pedro Reyes",
+    birthdate: "1988-11-10",
+    age: 36,
+    gender: "Male"
+  },
+  {
+    id: 4,
+    tin: "789-123-456",
+    fullName: "Ana Garcia",
+    birthdate: "1992-05-08",
+    age: 32,
+    gender: "Female"
+  },
+  {
+    id: 5,
+    tin: "321-654-987",
+    fullName: "Carlos Mendoza",
+    birthdate: "1987-09-18",
+    age: 37,
+    gender: "Male"
+  }
+];
+
+const loanRecords = [
+  {
+    id: 1,
+    borrower: "Juan Cruz",
+    loanId: "LN-2024-001",
+    amount: "₱5,000.00",
+    status: "Active"
+  },
+  {
+    id: 2,
+    borrower: "Maria Santos", 
+    loanId: "LN-2024-002",
+    amount: "₱3,000.00",
+    status: "Pending"
+  },
+  {
+    id: 3,
+    borrower: "Pedro Reyes",
+    loanId: "LN-2024-003", 
+    amount: "₱7,500.00",
+    status: "Approved"
+  }
+];
+
+const patrolBases = ["DCAO", "Base Alpha", "Base Bravo", "Base Charlie"];
 
 const Borrowers: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState('');

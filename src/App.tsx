@@ -9,6 +9,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 import Dashboard from "@/pages/Dashboard";
 import Analytics from "@/pages/Analytics";
 import Borrowers from "@/pages/Borrowers";
+import BorrowerRecord from "@/pages/BorrowerRecord";
 import Members from "@/pages/Members";
 import Loans from "@/pages/Loans";
 import PatrolBase from "@/pages/PatrolBase";
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/dashboard" element={<DashboardLayout><Dashboard /></DashboardLayout>} />
             <Route path="/analytics" element={<DashboardLayout><Analytics /></DashboardLayout>} />
             <Route path="/borrowers" element={<DashboardLayout><Borrowers /></DashboardLayout>} />
+            <Route path="/borrowers/:id" element={<DashboardLayout><BorrowerRecord /></DashboardLayout>} />
             <Route path="/members" element={<DashboardLayout><Members /></DashboardLayout>} />
             <Route path="/loans" element={<DashboardLayout><Loans /></DashboardLayout>} />
             <Route path="/patrol-base" element={<DashboardLayout><PatrolBase /></DashboardLayout>} />

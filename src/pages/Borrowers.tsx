@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -19,6 +20,7 @@ const Borrowers: React.FC = () => {
   const [selectedPatrolBase, setSelectedPatrolBase] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const filteredMembers = members.filter(member =>
     member.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -161,7 +163,11 @@ const Borrowers: React.FC = () => {
                       <TableCell>{member.age}</TableCell>
                       <TableCell>{member.gender}</TableCell>
                       <TableCell>
-                        <Button variant="outline" size="sm">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => navigate(`/borrowers/${member.id}`)}
+                        >
                           <Eye className="h-4 w-4 mr-1" />
                           View Record
                         </Button>

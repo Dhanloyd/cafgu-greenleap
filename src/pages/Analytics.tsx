@@ -3,10 +3,34 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { TrendingUp, TrendingDown, Users, CreditCard, DollarSign, AlertTriangle } from 'lucide-react';
 
-// Empty data - ready for database integration
-const performanceData: any[] = [];
-const riskAnalysisData: any[] = [];
-const collectionTrendsData: any[] = [];
+// Sample data for demonstration
+const performanceData = [
+  { month: 'Jan', loans: 120, members: 985 },
+  { month: 'Feb', loans: 135, members: 1008 },
+  { month: 'Mar', loans: 118, members: 1025 },
+  { month: 'Apr', loans: 152, members: 1067 },
+  { month: 'May', loans: 168, members: 1089 },
+  { month: 'Jun', loans: 175, members: 1134 },
+  { month: 'Jul', loans: 189, members: 1156 },
+  { month: 'Aug', loans: 172, members: 1178 },
+  { month: 'Sep', loans: 195, members: 1203 },
+  { month: 'Oct', loans: 182, members: 1225 },
+  { month: 'Nov', loans: 201, members: 1238 },
+  { month: 'Dec', loans: 183, members: 1247 },
+];
+
+const riskAnalysisData = [
+  { category: 'Low Risk', count: 142, percentage: 77.6 },
+  { category: 'Medium Risk', count: 34, percentage: 18.6 },
+  { category: 'High Risk', count: 7, percentage: 3.8 },
+];
+
+const collectionTrendsData = [
+  { week: 'Week 1', target: 350000, actual: 380000 },
+  { week: 'Week 2', target: 400000, actual: 385000 },
+  { week: 'Week 3', target: 380000, actual: 420000 },
+  { week: 'Week 4', target: 290000, actual: 315000 },
+];
 
 const Analytics: React.FC = () => {
 
@@ -24,11 +48,11 @@ const Analytics: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Growth Rate</p>
-                <p className="text-3xl font-bold text-muted-foreground">0%</p>
-                <p className="text-xs text-muted-foreground mt-1">No data available</p>
+                <p className="text-3xl font-bold text-success">+26.5%</p>
+                <p className="text-xs text-success mt-1">+8.2% from last month</p>
               </div>
-              <div className="h-12 w-12 bg-muted/20 rounded-lg flex items-center justify-center">
-                <TrendingUp className="h-6 w-6 text-muted-foreground" />
+              <div className="h-12 w-12 bg-success/10 rounded-lg flex items-center justify-center">
+                <TrendingUp className="h-6 w-6 text-success" />
               </div>
             </div>
           </CardContent>
@@ -39,11 +63,11 @@ const Analytics: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Collection Rate</p>
-                <p className="text-3xl font-bold text-muted-foreground">0%</p>
-                <p className="text-xs text-muted-foreground mt-1">No data available</p>
+                <p className="text-3xl font-bold text-primary">92.8%</p>
+                <p className="text-xs text-success mt-1">+3.1% from last month</p>
               </div>
-              <div className="h-12 w-12 bg-muted/20 rounded-lg flex items-center justify-center">
-                <DollarSign className="h-6 w-6 text-muted-foreground" />
+              <div className="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <DollarSign className="h-6 w-6 text-primary" />
               </div>
             </div>
           </CardContent>
@@ -54,11 +78,11 @@ const Analytics: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Risk Level</p>
-                <p className="text-3xl font-bold text-muted-foreground">-</p>
-                <p className="text-xs text-muted-foreground mt-1">No data available</p>
+                <p className="text-3xl font-bold text-warning">Low</p>
+                <p className="text-xs text-success mt-1">3.8% high risk loans</p>
               </div>
-              <div className="h-12 w-12 bg-muted/20 rounded-lg flex items-center justify-center">
-                <AlertTriangle className="h-6 w-6 text-muted-foreground" />
+              <div className="h-12 w-12 bg-warning/10 rounded-lg flex items-center justify-center">
+                <AlertTriangle className="h-6 w-6 text-warning" />
               </div>
             </div>
           </CardContent>
@@ -69,11 +93,11 @@ const Analytics: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Efficiency</p>
-                <p className="text-3xl font-bold text-muted-foreground">0%</p>
-                <p className="text-xs text-muted-foreground mt-1">No data available</p>
+                <p className="text-3xl font-bold text-success">89.4%</p>
+                <p className="text-xs text-success mt-1">+2.3% operational efficiency</p>
               </div>
-              <div className="h-12 w-12 bg-muted/20 rounded-lg flex items-center justify-center">
-                <CreditCard className="h-6 w-6 text-muted-foreground" />
+              <div className="h-12 w-12 bg-success/10 rounded-lg flex items-center justify-center">
+                <CreditCard className="h-6 w-6 text-success" />
               </div>
             </div>
           </CardContent>

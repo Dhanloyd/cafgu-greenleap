@@ -3,43 +3,64 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { TrendingUp, Users, CreditCard, AlertCircle, DollarSign } from 'lucide-react';
 
-// Empty data - ready for database integration
-const patrolBaseData: any[] = [];
-const monthlyCollectionData: any[] = [];
+// Sample data for demonstration
+const patrolBaseData = [
+  { name: 'Alpha Base', loans: 45 },
+  { name: 'Bravo Base', loans: 32 },
+  { name: 'Charlie Base', loans: 28 },
+  { name: 'Delta Base', loans: 38 },
+  { name: 'Echo Base', loans: 22 },
+  { name: 'Foxtrot Base', loans: 18 },
+];
+
+const monthlyCollectionData = [
+  { month: 'Jan', amount: 850000 },
+  { month: 'Feb', amount: 920000 },
+  { month: 'Mar', amount: 780000 },
+  { month: 'Apr', amount: 1050000 },
+  { month: 'May', amount: 980000 },
+  { month: 'Jun', amount: 1120000 },
+  { month: 'Jul', amount: 1180000 },
+  { month: 'Aug', amount: 1090000 },
+  { month: 'Sep', amount: 1240000 },
+  { month: 'Oct', amount: 1150000 },
+  { month: 'Nov', amount: 1300000 },
+  { month: 'Dec', amount: 1420000 },
+];
 
 const kpiData = [
   {
     title: 'Borrowed Amounts',
-    value: '₱0.00',
-    change: 'No data',
+    value: '₱12,450,000',
+    change: '+15.3% from last month',
     icon: DollarSign,
     trend: 'up',
   },
   {
     title: 'Total Members',
-    value: '0',
-    change: 'No data',
+    value: '1,247',
+    change: '+8.2% from last month',
     icon: Users,
     trend: 'up',
   },
   {
     title: 'Members with Loans',
-    value: '0',
-    change: 'No data',
+    value: '183',
+    change: '+12.5% from last month',
     icon: CreditCard,
     trend: 'up',
   },
   {
     title: 'Past Due Loans',
-    value: '0',
-    change: 'No data',
+    value: '7',
+    change: '-18.2% from last month',
     icon: AlertCircle,
     trend: 'down',
   },
   {
     title: 'Collectible this Month',
-    value: '₱0.00',
-    change: 'No data',
+    value: '₱1,420,000',
+    change: '+9.2% from last month',
     icon: TrendingUp,
     trend: 'up',
   },

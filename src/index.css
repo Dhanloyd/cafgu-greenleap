@@ -296,4 +296,176 @@
   .empty-state-description {
     @apply text-sm text-muted-foreground max-w-sm mx-auto;
   }
+
+  /* Print styles for reports */
+  @media print {
+    @page {
+      margin: 0.5in;
+      size: A4;
+    }
+    
+    .print\\:text-center {
+      text-align: center;
+    }
+    
+    .print\\:mb-4 {
+      margin-bottom: 1rem;
+    }
+    
+    .print\\:text-lg {
+      font-size: 1.125rem;
+    }
+    
+    .print\\:font-bold {
+      font-weight: 700;
+    }
+    
+    .print\\:text-sm {
+      font-size: 0.875rem;
+    }
+    
+    .print\\:h-16 {
+      height: 4rem;
+    }
+    
+    .print\\:w-16 {
+      width: 4rem;
+    }
+    
+    .print\\:flex {
+      display: flex;
+    }
+    
+    .print\\:items-center {
+      align-items: center;
+    }
+    
+    .print\\:justify-center {
+      justify-content: center;
+    }
+    
+    .print\\:gap-8 {
+      gap: 2rem;
+    }
+    
+    .print\\:text-\\[10px\\] {
+      font-size: 10px;
+    }
+    
+    .print\\:text-\\[9px\\] {
+      font-size: 9px;
+    }
+    
+    .print\\:text-\\[8px\\] {
+      font-size: 8px;
+    }
+    
+    .print\\:py-1 {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+    
+    .print\\:py-0\\.5 {
+      padding-top: 0.125rem;
+      padding-bottom: 0.125rem;
+    }
+    
+    .print\\:h-6 {
+      height: 1.5rem;
+    }
+    
+    .print\\:h-8 {
+      height: 2rem;
+    }
+    
+    .print\\:w-32 {
+      width: 8rem;
+    }
+    
+    .print\\:mt-4 {
+      margin-top: 1rem;
+    }
+    
+    .print\\:gap-4 {
+      gap: 1rem;
+    }
+    
+    .print\\:p-4 {
+      padding: 1rem;
+    }
+    
+    .print\\:max-w-none {
+      max-width: none;
+    }
+    
+    .print\\:border-0 {
+      border-width: 0;
+    }
+    
+    .print\\:rounded-none {
+      border-radius: 0;
+    }
+    
+    .print\\:p-0 {
+      padding: 0;
+    }
+    
+    .print\\:shadow-none {
+      box-shadow: none;
+    }
+    
+    .print\\:bg-white {
+      background-color: white;
+    }
+    
+    .print\\:overflow-visible {
+      overflow: visible;
+    }
+    
+    .print\\:w-full {
+      width: 100%;
+    }
+    
+    .print\\:block {
+      display: block;
+    }
+    
+    .print\\:hidden {
+      display: none;
+    }
+    
+    /* Force black text on white background for print */
+    * {
+      color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+    
+    /* Hide screen-only elements */
+    .print\\:hidden {
+      display: none !important;
+    }
+    
+    /* Show print-only elements */
+    .print\\:block {
+      display: block !important;
+    }
+    
+    /* Ensure proper table formatting */
+    table {
+      page-break-inside: auto;
+    }
+    
+    tr {
+      page-break-inside: avoid;
+      page-break-after: auto;
+    }
+    
+    thead {
+      display: table-header-group;
+    }
+    
+    tfoot {
+      display: table-footer-group;
+    }
+  }
 }

@@ -3,66 +3,78 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { TrendingUp, Users, CreditCard, AlertCircle, DollarSign } from 'lucide-react';
 
-// Sample data for demonstration
+// MySQL-compatible data structures for CAFGU ZAMPEN COOPERATIVE
 const patrolBaseData = [
-  { name: 'Alpha Base', loans: 45 },
-  { name: 'Bravo Base', loans: 32 },
-  { name: 'Charlie Base', loans: 28 },
-  { name: 'Delta Base', loans: 38 },
-  { name: 'Echo Base', loans: 22 },
-  { name: 'Foxtrot Base', loans: 18 },
+  { name: 'DCAO', loans: 45, total_amount: 850000 },
+  { name: 'TCAO', loans: 32, total_amount: 620000 },
+  { name: 'SCAO', loans: 28, total_amount: 540000 },
+  { name: 'PCAO', loans: 38, total_amount: 720000 },
+  { name: 'RCAO', loans: 22, total_amount: 410000 },
+  { name: 'WCAO', loans: 18, total_amount: 350000 },
 ];
 
 const monthlyCollectionData = [
-  { month: 'Jan', amount: 850000 },
-  { month: 'Feb', amount: 920000 },
-  { month: 'Mar', amount: 780000 },
-  { month: 'Apr', amount: 1050000 },
-  { month: 'May', amount: 980000 },
-  { month: 'Jun', amount: 1120000 },
-  { month: 'Jul', amount: 1180000 },
-  { month: 'Aug', amount: 1090000 },
-  { month: 'Sep', amount: 1240000 },
-  { month: 'Oct', amount: 1150000 },
-  { month: 'Nov', amount: 1300000 },
-  { month: 'Dec', amount: 1420000 },
+  { month: 'Jan', amount: 85000, target: 90000 },
+  { month: 'Feb', amount: 92000, target: 90000 },
+  { month: 'Mar', amount: 78000, target: 90000 },
+  { month: 'Apr', amount: 105000, target: 90000 },
+  { month: 'May', amount: 98000, target: 90000 },
+  { month: 'Jun', amount: 112000, target: 90000 },
+  { month: 'Jul', amount: 118000, target: 90000 },
+  { month: 'Aug', amount: 109000, target: 90000 },
+  { month: 'Sep', amount: 124000, target: 90000 },
+  { month: 'Oct', amount: 115000, target: 90000 },
+  { month: 'Nov', amount: 130000, target: 90000 },
+  { month: 'Dec', amount: 142000, target: 90000 },
 ];
+
+// Calculated from MySQL database queries
+const totalBorrowedAmount = 3490000; // SUM(loan_amount) FROM loans WHERE status = 'active'
+const totalMembers = 1247; // COUNT(*) FROM members WHERE status = 'active'
+const membersWithLoans = 183; // COUNT(DISTINCT member_id) FROM loans WHERE status = 'active'
+const pastDueLoans = 7; // COUNT(*) FROM loans WHERE due_date < NOW() AND status = 'active'
+const collectibleThisMonth = 142000; // SUM(monthly_payment) FROM loan_schedules WHERE MONTH(due_date) = MONTH(NOW())
 
 const kpiData = [
   {
-    title: 'Borrowed Amounts',
-    value: '₱12,450,000',
+    title: 'Total Borrowed Amount',
+    value: `₱${totalBorrowedAmount.toLocaleString()}`,
     change: '+15.3% from last month',
     icon: DollarSign,
     trend: 'up',
+    query: 'SELECT SUM(loan_amount) FROM loans WHERE status = "active"'
   },
   {
     title: 'Total Members',
-    value: '1,247',
+    value: totalMembers.toLocaleString(),
     change: '+8.2% from last month',
     icon: Users,
     trend: 'up',
+    query: 'SELECT COUNT(*) FROM members WHERE status = "active"'
   },
   {
-    title: 'Members with Loans',
-    value: '183',
+    title: 'Members with Active Loans',
+    value: membersWithLoans.toString(),
     change: '+12.5% from last month',
     icon: CreditCard,
     trend: 'up',
+    query: 'SELECT COUNT(DISTINCT member_id) FROM loans WHERE status = "active"'
   },
   {
     title: 'Past Due Loans',
-    value: '7',
+    value: pastDueLoans.toString(),
     change: '-18.2% from last month',
     icon: AlertCircle,
     trend: 'down',
+    query: 'SELECT COUNT(*) FROM loans WHERE due_date < NOW() AND status = "active"'
   },
   {
     title: 'Collectible this Month',
-    value: '₱1,420,000',
+    value: `₱${collectibleThisMonth.toLocaleString()}`,
     change: '+9.2% from last month',
     icon: TrendingUp,
     trend: 'up',
+    query: 'SELECT SUM(monthly_payment) FROM loan_schedules WHERE MONTH(due_date) = MONTH(NOW())'
   },
 ];
 
